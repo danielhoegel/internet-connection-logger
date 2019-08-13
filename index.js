@@ -4,7 +4,7 @@
 
 const URL = 'https://zeit.de'
 const INTERVAL = 1000; // in ms (1000 = 1s)
-const FILENAME = 'log.text';
+const FILENAME = 'log.txt';
 
 
 /**
