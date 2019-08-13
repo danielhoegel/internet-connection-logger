@@ -5,7 +5,7 @@ This program logs every 500ms whether it can fetch the url https://zeit.de and w
 ## Installation and usage
 - Download and install Node.js 10.16.2 or later from [nodejs.org](https://nodejs.org/en/)
 - Install Dependencies
-    1. Open a command line inside this folder
-    2. Run the command `npm install`
+    - Open a command line inside this folder
+    - Run the command `npm install`
 - Start the program with the command `npm start`
 - End the program by typing `ctrl`+ `c` or by closing the command line window
