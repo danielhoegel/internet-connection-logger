@@ -2,9 +2,8 @@
  * VARIABLES
  */
 
-const URL = 'https://zeit.de'
+const URL = 'https://zeit.de';
 const INTERVAL = 5000; // in ms (1000 = 1s)
-const FILENAME = 'logs/log.txt';
 
 
 /**
@@ -13,6 +12,7 @@ const FILENAME = 'logs/log.txt';
 
 const axios = require('axios');
 const fs = require('fs');
+const path = require('path');
 
 
 /**
@@ -59,9 +59,14 @@ function testConnection() {
  * MAIN
  */
 
-const fileNameParts = FILENAME.split('.');
+const fileName = `log_${getLocaleTimestamp()}.txt`;
+const fileDir = 'logs';
 
-const fileExtension = fileNameParts.pop();
-const fileName = `${fileNameParts.join('.')}_${getLocaleTimestamp()}.${fileExtension}`;
-const stream = fs.createWriteStream(fileName, { flags:'a' });
+if (!fs.existsSync(fileDir)){
+    fs.mkdirSync(fileDir);
+}
+const filePath = path.join(fileDir, fileName);
+const stream = fs.createWriteStream(filePath, { flags:'a' });
+console.log(`Logging to file ${filePath}`);
+
 setInterval(testConnection, INTERVAL);
