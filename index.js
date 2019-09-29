@@ -37,7 +37,17 @@ function log(...args) {
     const timestamp = getLocaleISOTime();
     const message = timestamp + '\t' + args.join('\t');
     stream.write(message + '\n');
-    console.log(message);
+    
+    // color reference: https://stackoverflow.com/a/41407246/8936417
+    if (['ERROR', 'OFF'].includes(args[0])) {
+        if (args[1] === 'ETIMEDOUT') { // ETIMEDOUT
+            console.log('\x1b[31m%s\x1b[0m', message); // red foreground
+        } else { // e.g. ENOTFOUND
+            console.log('\x1b[33m%s\x1b[0m', message); // yellow foreground
+        }
+    } else { // e.g. 200 OK
+        console.log('\x1b[32m%s\x1b[0m', message); // green foreground
+    }
 }
 
 function testConnection() {
