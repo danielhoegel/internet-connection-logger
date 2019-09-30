@@ -41,12 +41,12 @@ function log(...args) {
     // color reference: https://stackoverflow.com/a/41407246/8936417
     if (['ERROR', 'OFF'].includes(args[0])) {
         if (args[1] === 'ETIMEDOUT') { // ETIMEDOUT
-            console.log('\x1b[31m%s\x1b[0m', message); // red foreground
+            console.log('\x1b[41m%s\x1b[0m', message); // red background
         } else { // e.g. ENOTFOUND
-            console.log('\x1b[33m%s\x1b[0m', message); // yellow foreground
+            console.log('\x1b[43m%s\x1b[0m', message); // yellow background
         }
     } else { // e.g. 200 OK
-        console.log('\x1b[32m%s\x1b[0m', message); // green foreground
+        console.log('\x1b[42m%s\x1b[0m', message); // green background
     }
 }
 
